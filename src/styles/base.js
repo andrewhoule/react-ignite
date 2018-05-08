@@ -2,7 +2,7 @@
 import { injectGlobal } from 'styled-components';
 import reset from 'styled-reset';
 
-import { colors, vars } from './';
+import { colors, fonts, vars } from './';
 
 const baseStyles = () => injectGlobal`
   ${reset}
@@ -12,7 +12,7 @@ const baseStyles = () => injectGlobal`
   }
 
   body {
-    font-family: ${vars.sansSerifFamily};
+    font-family: ${fonts.sansSerifFamily};
     font-size: calc(1.6rem + .1vw);
     font-weight: 400;
     line-height: 1.5;
