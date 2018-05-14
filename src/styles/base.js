@@ -76,6 +76,11 @@ const baseStyles = () => injectGlobal`
     height: auto;
     max-width: 100%;
   }
+
+  button {
+    background-color: transparent;
+    border: 0;
+  }
 `;
 
 export default baseStyles;

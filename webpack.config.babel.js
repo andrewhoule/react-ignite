@@ -1,10 +1,10 @@
 
 const apply = require('postcss-apply');
-const browserSync = require('browser-sync-webpack-plugin');
 const colorFunction = require('postcss-color-function');
 const cssImport = require('postcss-import');
 const cssNano = require('cssnano');
 const cssNext = require('postcss-cssnext');
+const htmlWebpackPlugin = require('html-webpack-plugin');
 const miniCssExtractPlugin = require('mini-css-extract-plugin');
 const nested = require('postcss-nested');
 const path = require('path');
@@ -20,20 +20,17 @@ module.exports = {
 
   devtool: 'eval-source-map',
 
-  entry: [
-    path.join(__dirname, 'src/index.js')
-  ],
+  entry: './src/index.js',
 
   output: {
-    path: path.join(__dirname, '/public/'),
-    publicPath: './',
+    path: path.join(__dirname, '/dist/'),
     filename: 'bundle.js'
   },
 
   module: {
     rules: [
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(ico|png|jpg|gif)$/,
         exclude: /(node_modules)/,
         loader: 'file-loader',
         options: {
@@ -105,17 +102,15 @@ module.exports = {
       allChunks: true
     }),
 
-    new browserSync({
-      host: 'localhost',
-      port: 3000,
-      proxy: 'http://somedomain.local',
-      notify: false
-    }),
-
     new svgSpritemapPlugin({
       filename: 'icons.svg',
       prefix: '',
       src: './src/assets/icons/**/*.svg'
+    }),
+
+    new htmlWebpackPlugin({
+      favicon: './src/assets/img/favicon.ico',
+      template: './src/index.html'
     })
   ]
 }
