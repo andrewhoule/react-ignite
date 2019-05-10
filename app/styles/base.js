@@ -1,10 +1,9 @@
+import { createGlobalStyle } from "styled-components";
+import reset from "styled-reset";
 
-import { injectGlobal } from 'styled-components';
-import reset from 'styled-reset';
+import { fonts, vars } from "./";
 
-import { colors, fonts, vars } from './';
-
-const baseStyles = () => injectGlobal`
+const GlobalStyle = createGlobalStyle`
   ${reset}
 
   html {
@@ -83,4 +82,4 @@ const baseStyles = () => injectGlobal`
   }
 `;
 
-export default baseStyles;
+export default GlobalStyle;
